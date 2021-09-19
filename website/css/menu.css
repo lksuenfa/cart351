@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto+Mono:wght@400;500&family=Roboto:wght@500;700&display=swap");
+
+/* Adapted from https://www.w3schools.com/howto/howto_css_dropdown_menu.asp */
+
+.menu {
+  /* positionning */
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1rem;
+  padding-right: 3rem;
+}
+
+.dropbutton {
+  /* text formatting */
+  font-size: 1rem;
+  font-family: "Roboto Mono", monospace;
+  text-transform: uppercase;
+
+  /* button appearance */
+  border: none;
+  outline: none;
+  padding: 20px 50px;
+}
+
+/* change text size on hover */
+.menu a:hover,
+.dropdown:hover .dropbutton {
+  font-weight: 700;
+}
+
+.dropdown-content {
+  /* hidden by default */
+  display: none;
+
+  /* text formatting */
+  text-transform: uppercase;
+  font-size: 0.8rem;
+
+  /* positionning */
+  position: absolute;
+  min-width: 5rem;
+  max-width: 10rem;
+  margin-left: 50px;
+  z-index: 1;
+}
+
+/* display dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Links inside dropdown */
+.dropdown-content a {
+  display: block;
+  float: none;
+
+  /* text formatting */
+  font-family: "Roboto Mono", monospace;
+  color: black;
+  text-decoration: none;
+
+  /* positionning */
+  padding: 12px 16px;
+
+  text-align: left;
+}
