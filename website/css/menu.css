@@ -28,6 +28,7 @@
 .menu a:hover,
 .dropdown:hover .dropbutton {
   font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .dropdown-content {
