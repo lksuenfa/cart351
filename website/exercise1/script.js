@@ -17,7 +17,8 @@ let context;
 let squareTest;
 
 let squares = [];
-const NUM_SQUARES = 100;
+const NUM_SQUARES = 1000;
+let squareSize = 10;
 
 //empty array
 // let wordArray = [];
@@ -31,9 +32,15 @@ window.onload = function () {
   // squareTest.draw();
 
   for (let i = 0; i < NUM_SQUARES; i++) {
-    let square = new Square(canvas.width, canvas.height, context);
+    let square = new Square(squareSize, canvas.width, canvas.height, context);
     squares.push(square);
     // squares.draw();
+  }
+
+  canvas.addEventListener("click", increaseSize);
+
+  function increaseSize() {
+    squareSize = 50;
   }
 
   requestAnimationFrame(animate);
@@ -50,7 +57,7 @@ window.onload = function () {
 
     for (let i = 0; i < NUM_SQUARES; i++) {
       squares[i].draw();
-      // squares[i].move();
+      squares[i].move();
     }
     requestAnimationFrame(animate);
   }
