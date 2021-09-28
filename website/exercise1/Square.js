@@ -7,7 +7,6 @@ class Square {
     this.size = size;
 
     this.vy = 5;
-    // this.newY = undefined;
 
     this.context = context;
 
@@ -28,7 +27,6 @@ class Square {
   move() {
     //fall down
     this.y = this.y += this.vy;
-    // this.setPoints(this.x, newY); // ERROR MSG this.setpoints is not a function
 
     // if reach bottom of canvas return to top
     if (this.y > this.canvasHeight) {
