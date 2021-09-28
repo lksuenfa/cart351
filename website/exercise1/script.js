@@ -14,7 +14,7 @@ ERROR MSG this.setpoints is not a function
 
 let canvas;
 let context;
-let squareTest;
+// let squareTest;
 
 let squares = [];
 const NUM_SQUARES = 1000;
