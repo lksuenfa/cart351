@@ -4,8 +4,24 @@ body {
 }
 
 canvas {
-  background: black;
+  margin: 150px 0px;
+  background: blue;
   position: absolute;
   top: 0%;
   left: 0%;
+}
+
+body,
+input,
+p,
+div {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  background: #0ea6a4;
+  display: inline-table;
+  margin: 1%;
+  width: 25%;
+  padding: 2%;
 }
