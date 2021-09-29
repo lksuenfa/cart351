@@ -1,50 +1,45 @@
 class Shape {
   constructor(text, canvasWidth, canvasHeight, context) {
-    this.x = Math.floor(Math.random() * 100);
-    this.y = Math.floor(Math.random() * 100);
-    this.text = text;
-
-    this.vx = 5;
-    this.vy = 2;
-
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
     this.context = context;
 
-    // //randomize colour :)
-    this.colour = `rgba(
-      ${Math.floor(Math.random() * 255)},
-      ${Math.floor(Math.random() * 255)},
-      ${Math.floor(Math.random() * 255)},
-      ${Math.floor(Math.random() * 255)}
-    )`;
+    this.text = text;
+    this.x = Math.floor(Math.random() * this.canvasWidth);
+    this.y = Math.floor(Math.random() * this.canvasHeight);
 
-    this.font = "60px Arial";
+    this.vy = 1;
+
+    this.colour = `#ffffff`; // white
+  }
+
+  draw() {
+    this.context.fillText(this.text, this.x, this.y);
+    this.context.fillStyle = this.colour;
+    this.context.font = "60px Arial";
   }
 
   move() {
-    this.x += this.vx;
-    this.y += this.vy;
-  }
+    //fall down
+    this.y = this.y += this.vy;
 
-  checkBounds() {
-    if (this.x > this.canvasWidth || this.x < 0) {
-      this.vx = this.vx * -1;
-    }
-
-    if (this.y > this.canvasHeight || this.y < 0) {
-      this.vy = this.vy * -1;
+    // if reach bottom of canvas return to top
+    if (this.y > this.canvasHeight) {
+      this.y = 0;
     }
   }
 
-  display() {
-    this.context.fillText(this.text, this.x, this.y);
-    this.context.fillStyle = this.colour;
-    this.context.font = this.font;
-  }
+  checkCollision(mouseX, mouseY) {
+    this.textWidth = this.context.measureText(this.text); //width of text
+    this.context.textBaseline = "top"; //set baseline to top
+    this.textHeight = this.text.emHeightDescent; //distance between baseline and bottom of em square
 
-  update() {
-    move();
-    checkBound();
+    if (mouseX > this.x && mouseX < this.textWidth) {
+      if (mouseY > this.y && mouseY < this.textHeight) {
+        console.log("i touch you");
+        this.colour = "#fc4e03"; //change colour to orange
+        this.vy = 0; //stop moving
+      }
+    }
   }
 }

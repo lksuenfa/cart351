@@ -1,10 +1,11 @@
 class Square {
-  constructor(size, canvasWidth, canvasHeight, context) {
+  constructor(canvasWidth, canvasHeight, context) {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
     this.x = Math.floor(Math.random() * this.canvasWidth);
     this.y = Math.floor(Math.random() * this.canvasHeight);
-    this.size = size;
+    this.size = 10;
+    this.maxSize = 200;
 
     this.vy = 1;
 
@@ -41,7 +42,10 @@ class Square {
     if (mouseX > this.x && mouseX < this.x2) {
       if (mouseY > this.y && mouseY < this.y2) {
         console.log("i touch you");
-        this.size = this.size + 100;
+        if (this.size < this.maxSize) {
+          this.size = this.size + 100;
+        }
+
         this.vy = 0;
       }
     }

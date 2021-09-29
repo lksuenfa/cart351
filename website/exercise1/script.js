@@ -14,27 +14,21 @@ ERROR MSG this.setpoints is not a function
 
 let canvas;
 let context;
-// let squareTest;
 
 let squares = [];
 const NUM_SQUARES = 1000;
 let squareSize = 10;
 
-//empty array
-// let wordArray = [];
-// const NUM_WORDS = 50; //new make a constant
+let wordArray = [];
+const NUM_WORDS = 50; //new make a constant
 
 window.onload = function () {
   setUpCanvas();
-  // setUpTextInput();
-  //
-  // squareTest = new Square(canvas.width, canvas.height, context);
-  // squareTest.draw();
+  setUpTextInput();
 
   for (let i = 0; i < NUM_SQUARES; i++) {
-    let square = new Square(squareSize, canvas.width, canvas.height, context);
+    let square = new Square(canvas.width, canvas.height, context);
     squares.push(square);
-    // squares.draw();
   }
 
   canvas.addEventListener("click", increaseSize);
@@ -55,17 +49,17 @@ window.onload = function () {
   function animate() {
     // repaint with a black rect..
     context.clearRect(0, 0, canvas.width, canvas.height);
-    // squareTest.move();
 
-    // for (let i = 0; i < NUM_WORDS; i++) {
-    //   wordArray[i].update();
-    //   wordArray[i].display();
-    // }
+    for (let i = 0; i < NUM_WORDS; i++) {
+      wordArray[i].draw();
+      wordArray[i].move();
+    }
 
     for (let i = 0; i < NUM_SQUARES; i++) {
       squares[i].draw();
       squares[i].move();
     }
+
     requestAnimationFrame(animate);
   }
 };
@@ -86,45 +80,43 @@ function setUpCanvas() {
   });
 }
 
-// function setUpTextInput() {
-//   document
-//     .getElementById("inputText")
-//     .addEventListener("change", readAndHandleTextFile);
-//
-//   function readAndHandleTextFile() {
-//     const selectedFileList = this.files;
-//     const file = selectedFileList[0];
-//
-//     if (file.type.startsWith("text/")) {
-//       const pTag = document.createElement("p");
-//       const reader = new FileReader();
-//
-//       //once is read
-//       reader.addEventListener("load", function () {
-//         console.log(reader.result);
-//         pTag.textContent = reader.result;
-//
-//         // append to the document
-//         document.getElementsByClassName("wrapper")[0].appendChild(pTag);
-//
-//         // separate words from text
-//         let words = reader.result.split("\n");
-//
-//         // load words from text
-//         for (let i = 0; i < words.length; i++) {
-//           console.log(words[i]);
-//           let wordShape = new Shape(
-//             words[i],
-//             canvas.width,
-//             canvas.height,
-//             context
-//           );
-//           wordArray.push(wordShape);
-//         }
-//       });
-//
-//       // to read the file as text
-//       reader.readAsText(file);
-//     }
-//   }
-// }
+function setUpTextInput() {
+  document
+    .getElementById("inputText")
+    .addEventListener("change", readAndHandleTextFile);
+
+  function readAndHandleTextFile() {
+    const selectedFileList = this.files;
+    const file = selectedFileList[0];
+
+    if (file.type.startsWith("text/")) {
+      // const pTag = document.createElement("p");
+      const reader = new FileReader();
+
+      //once is read
+      reader.addEventListener("load", function () {
+        // console.log(reader.result);
+        // pTag.textContent = reader.result;
+        // append to the document
+        // document.getElementsByClassName("wrapper")[0].appendChild(pTag);
+
+        // separate words from text
+        let words = reader.result.split(" ");
+
+        // load words from text
+        for (let i = 0; i < words.length; i++) {
+          let wordShape = new Shape(
+            words,
+            canvas.width,
+            canvas.height,
+            context
+          );
+          wordArray.push(wordShape);
+        }
+      });
+
+      // to read the file as text
+      reader.readAsText(file);
+    }
+  }
+}
