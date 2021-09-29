@@ -38,7 +38,7 @@ class Shape {
   }
 
   display() {
-    fillText(this.text, this.x, this.y);
+    this.context.fillText(this.text, this.x, this.y);
     this.context.fillStyle = this.colour;
     this.context.font = this.font;
   }
