@@ -14,9 +14,9 @@ class Shape {
   }
 
   draw() {
-    this.context.fillText(this.text, this.x, this.y);
     this.context.fillStyle = this.colour;
     this.context.font = "60px Arial";
+    this.context.fillText(this.text, this.x, this.y);
   }
 
   move() {

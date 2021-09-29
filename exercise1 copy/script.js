@@ -90,15 +90,15 @@ function setUpTextInput() {
     const file = selectedFileList[0];
 
     if (file.type.startsWith("text/")) {
-      // const pTag = document.createElement("p");
+      const pTag = document.createElement("p");
       const reader = new FileReader();
 
       //once is read
       reader.addEventListener("load", function () {
         // console.log(reader.result);
-        // pTag.textContent = reader.result;
+        pTag.textContent = reader.result;
         // append to the document
-        // document.getElementsByClassName("wrapper")[0].appendChild(pTag);
+        document.getElementsByClassName("wrapper")[0].appendChild(pTag);
 
         // separate words from text
         let words = reader.result.split(" ");
