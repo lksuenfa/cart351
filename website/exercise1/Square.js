@@ -6,7 +6,7 @@ class Square {
     this.y = Math.floor(Math.random() * this.canvasHeight);
     this.size = size;
 
-    this.vy = 5;
+    this.vy = 1;
 
     this.context = context;
 
@@ -31,6 +31,19 @@ class Square {
     // if reach bottom of canvas return to top
     if (this.y > this.canvasHeight) {
       this.y = 0;
+    }
+  }
+
+  checkCollision(mouseX, mouseY) {
+    this.x2 = this.x + this.size;
+    this.y2 = this.y + this.size;
+
+    if (mouseX > this.x && mouseX < this.x2) {
+      if (mouseY > this.y && mouseY < this.y2) {
+        console.log("i touch you");
+        this.size = this.size + 100;
+        this.vy = 0;
+      }
     }
   }
 }

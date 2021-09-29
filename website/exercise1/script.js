@@ -40,7 +40,14 @@ window.onload = function () {
   canvas.addEventListener("click", increaseSize);
 
   function increaseSize() {
-    squareSize = 50;
+    let pBox = this.getBoundingClientRect();
+
+    let mouseOffsetX = Math.floor(event.clientX - pBox.x);
+    let mouseOffsetY = Math.floor(event.clientY - pBox.y);
+
+    for (let i = 0; i < NUM_SQUARES; i++) {
+      squares[i].checkCollision(mouseOffsetX, mouseOffsetY);
+    }
   }
 
   requestAnimationFrame(animate);
