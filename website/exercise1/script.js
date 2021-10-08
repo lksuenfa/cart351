@@ -7,6 +7,8 @@ Description
 + Clicking stop squares
 + Try to create the straightest stack of the same colour
 
+I also wanted to replace the squares with falling words from text input and on click they'd stop and change colour to form random sentences
+
 ***********************/
 
 let canvas;
@@ -15,11 +17,15 @@ let context;
 let squares = [];
 const NUM_SQUARES = 100;
 
+let wordArray = [];
+const NUM_WORDS = 50;
+
 window.onload = function () {
   setUpCanvas();
   addSquare();
   onClick();
   animate();
+  setUpTextInput();
 };
 
 // function to set up canvas
@@ -80,6 +86,61 @@ function animate() {
       squares[i].move();
     }
 
+    // *******************
+    // DOES NOT WORK
+    // ERROR MESSAGE:
+    // TypeError: Cannot read properties of undefined (reading 'draw')
+    //     // add words to canvas and animate them
+    //     for (let i = 0; i < NUM_WORDS; i++) {
+    //       wordArray[i].draw();
+    //       wordArray[i].move();
+    //     }
+
     requestAnimationFrame(animate);
+  }
+}
+
+// function to add text to canvas
+function setUpTextInput() {
+  // input text
+  document
+    .getElementById("inputText")
+    .addEventListener("change", readAndHandleTextFile);
+
+  function readAndHandleTextFile() {
+    const selectedFileList = this.files;
+    const file = selectedFileList[0];
+
+    // if file upload is text only
+    if (file.type.startsWith("text/")) {
+      const pTag = document.createElement("p");
+      const reader = new FileReader();
+
+      //once read
+      reader.addEventListener("load", function () {
+        // console.log(reader.result);
+
+        // append to the document
+        pTag.textContent = reader.result;
+        document.getElementsByClassName("wrapper")[0].appendChild(pTag);
+
+        // separate words from text
+        let words = reader.result.split(" ");
+
+        // load words from text into wordArray
+        for (let i = 0; i < words.length; i++) {
+          let wordShape = new UseText(
+            words,
+            canvas.width,
+            canvas.height,
+            context
+          );
+          wordArray.push(wordShape);
+        }
+      });
+
+      // to read the file as text
+      reader.readAsText(file);
+    }
   }
 }
