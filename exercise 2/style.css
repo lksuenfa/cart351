@@ -1,0 +1,31 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  background-color: orange;
+}
+.body-wrapper {
+  width: 70%;
+  margin-left: 15%;
+  background: hotpink;
+  padding-bottom: 10px;
+}
+
+h1 {
+  color: white;
+}
+
+header h2 {
+  text-align: center;
+  color: white;
+  background: deeppink;
+  padding: 2px;
+}
+
+#result-container {
+  margin: 2%;
+  background: plum;
+  padding: 2%;
+  display: flex;
+  flex-wrap: wrap;
+}
