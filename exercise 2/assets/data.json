@@ -1,53 +1,52 @@
 {
-  "description": "Things I've googled in 4 days",
-
-  "Saturday": [
+  "Description": "Things I've google in 4 days",
+  "Schedule": [
     {
-      "time": "8:25 PM",
-      "description": "Icarus streaming",
-      "category": "Game",
-      "activity": "leisure"
+      "Day": "Saturday",
+      "Activities": [
+        {
+          "time": "8:25 PM",
+          "description": "Icarus streaming",
+          "category": "Game"
+        },
+        {
+          "time": "8:30 PM",
+          "description": "Light novel translations",
+          "category": "Book"
+        }
+      ]
     },
 
     {
-      "time": "8:30 PM",
-      "description": "Light novel translations",
-      "category": "Book",
-      "activity": "leisure"
+      "Day": "Sunday",
+      "Activities": [
+        {
+          "time": "8:59 PM",
+          "description": "Peach resin dessert",
+          "category": "Food"
+        },
+        {
+          "time": "9:49 PM",
+          "description": "DIY cosmetics recipes",
+          "category": "Crafting"
+        }
+      ]
     },
 
     {
-      "time": "8:59 PM",
-      "description": "Peach resin dessert",
-      "category": "Food",
-      "activity": "cooking"
-    },
-
-    {
-      "time": "9:49 PM",
-      "description": "DIY cosmetics recipes",
-      "category": "Crafting",
-      "activity": "leisure"
-    },
-
-    {
-      "time": "10:22 PM",
-      "description": "Salmon miso butter",
-      "category": "Food",
-      "activity": "cooking"
-    },
-    {
-      "time": "10:55 PM",
-      "description": "Simple Polygon Generator",
-      "category": "Blender",
-      "activity": "studying"
-    },
-
-    {
-      "time": "10:22 PM",
-      "description": "Icarus game sleep",
-      "category": "Game",
-      "activity": "leisure"
+      "Day": "Monday",
+      "Activities": [
+        {
+          "time": "10:22 PM",
+          "description": "Salmon miso butter",
+          "category": "Food"
+        },
+        {
+          "time": "10:55 PM",
+          "description": "Simple Polygon Generator",
+          "category": "Blender"
+        }
+      ]
     }
   ]
 }
