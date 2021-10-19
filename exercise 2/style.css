@@ -2,23 +2,23 @@
   margin: 0px;
   padding: 0px;
   font-family: "helvetica neue", helvetica, arial, sans-serif;
-  background-color: orange;
-}
-.body-wrapper {
-  width: 70%;
-  margin-left: 15%;
-  background: hotpink;
-  padding-bottom: 10px;
 }
 
-h1 {
-  color: white;
+#content {
+  display: flex;
+  background-color: #c83d55; /* pink */
+}
+canvas {
+  background: #662433; /* maroon */
+  position: relative;
 }
 
-header h2 {
+.title {
+  color: #aab1bd;
+  margin: 10%;
+}
+h2 {
   text-align: center;
-  color: white;
-  background: deeppink;
   padding: 2px;
 }
 
@@ -28,4 +28,8 @@ header h2 {
   padding: 2%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.searchBar {
+  margin: 10%;
 }
