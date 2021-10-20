@@ -1,52 +1,49 @@
 {
   "Description": "Things ",
-  "Schedule": [
+  "activities": [
     {
-      "Day": "Saturday",
-      "Activities": [
-        {
-          "time": "8:25 PM",
-          "description": "Icarus streaming",
-          "category": "Game"
-        },
-        {
-          "time": "8:30 PM",
-          "description": "Light novel translations",
-          "category": "Book"
-        }
-      ]
+      "activityID": "1",
+      "day": "saturday",
+      "time": "8:25 PM",
+      "description": "Icarus streaming",
+      "category": "Game"
+    },
+    {
+      "activityID": "2",
+      "day": "saturday",
+      "time": "8:30 PM",
+      "description": "Light novel translations",
+      "category": "Book"
     },
 
     {
-      "Day": "Sunday",
-      "Activities": [
-        {
-          "time": "8:59 PM",
-          "description": "Peach resin dessert",
-          "category": "Food"
-        },
-        {
-          "time": "9:49 PM",
-          "description": "DIY cosmetics recipes",
-          "category": "Crafting"
-        }
-      ]
+      "activityID": "3",
+      "day": "sunday",
+      "time": "8:59 PM",
+      "description": "Peach resin dessert",
+      "category": "Food"
+    },
+    {
+      "activityID": "4",
+      "day": "sunday",
+      "time": "9:49 PM",
+      "description": "DIY cosmetics recipes",
+      "category": "Crafting"
     },
 
     {
-      "Day": "Monday",
-      "Activities": [
-        {
-          "time": "10:22 PM",
-          "description": "Salmon miso butter",
-          "category": "Food"
-        },
-        {
-          "time": "10:55 PM",
-          "description": "Simple Polygon Generator",
-          "category": "Blender"
-        }
-      ]
+      "activityID": "5",
+      "day": "monday",
+      "time": "10:22 PM",
+      "description": "Salmon miso butter",
+      "category": "Food"
+    },
+    {
+      "activityID": "6",
+      "day": "monday",
+      "time": "10:55 PM",
+      "description": "Simple Polygon Generator",
+      "category": "Blender"
     }
   ]
 }

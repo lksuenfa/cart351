@@ -8,7 +8,6 @@ class Square {
   }
   display() {
     this.context.fillStyle = this.fill;
-    this.context.rotate((40 * Math.PI) / 180);
     this.context.fillRect(this.x, this.y, this.size, this.size);
   }
 }
