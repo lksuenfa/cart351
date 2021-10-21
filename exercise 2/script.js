@@ -6,15 +6,33 @@ let firstTime = true;
 let container = $("#result-container");
 let canvas;
 let data;
-let activities;
+
 let displayResult = {
   description: undefined,
   time: undefined,
   category: undefined,
 };
 
+let context;
+let crosses = [];
+const NUM_CROSS = 100;
+
 window.onload = function () {
   setUpCanvas();
+
+  requestAnimationFrame(animate);
+
+  function animate() {
+    // clear canvas
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < NUM_CROSS; i++) {
+      console.log(crosses[i]);
+      crosses[i].display();
+    }
+
+    requestAnimationFrame(animate);
+  }
 };
 
 $(document).ready(function () {
@@ -44,6 +62,12 @@ function setUpCanvas() {
     // canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
+
+  // draw crosses
+  for (let i = 0; i < NUM_CROSS; i++) {
+    let cross = new Cross(canvas.width / 2, canvas.height / 2, context);
+    crosses.push(cross);
+  }
 }
 
 // function to display results
@@ -82,6 +106,7 @@ function searchAndFilter() {
       // display results
       let jsonData = data.activities;
       for (let i = 0; i < filteredResults.length; i++) {
+        let singleResultContainer = $("<div>");
         displayResult.description = $("<p>")
           .appendTo(container)
           .addClass("search_result_description");
@@ -100,29 +125,3 @@ function searchAndFilter() {
     }
   } //getSearchTerms
 }
-
-// // function to make title appear
-// function showTitle(data) {
-//   let jsonData = data.activities;
-//   let scheduleArray = data.activities;
-//   let subtitle = $("#subtitle");
-//
-//   for (let i = 0; i < jsonData.length; i++) {
-//     let day = $("<p>").appendTo(subtitle).addClass("day");
-//     day.text(`*${jsonData[i].day}*`);
-//     // console.log(scheduleArray[i].description);
-//   }
-// }
-
-// showTitle(data);
-// // showDay(data);
-// console.log(data);
-// console.log(data.activities.length);
-// let days = data.activities;
-// for (let i = 0; i < days.length; i++) {
-//   console.log(days[i].day);
-//
-//   if (days[i].day === "sunday") {
-//     console.log(days[i].activityID);
-//   }
-// }

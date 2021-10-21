@@ -23,13 +23,26 @@ h2 {
 }
 
 #result-container {
-  margin: 2%;
-  background: plum;
+  margin: 10%;
+  background: #c46d7c;
+  color: darkred;
   padding: 2%;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .searchBar {
   margin: 10%;
+}
+
+#searchText {
+  color: darkred;
+  background-color: peachpuff;
+  width: 80%;
+  border: none;
+  padding: 5px;
+}
+#searchButton {
+  background-color: darkred;
+  border: crimson;
+  color: floralwhite;
+  padding: 5px;
 }
