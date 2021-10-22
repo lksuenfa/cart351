@@ -46,3 +46,11 @@ h2 {
   color: floralwhite;
   padding: 5px;
 }
+
+#result-container .search_result_description {
+  margin-top: 15px;
+  font-weight: bold;
+}
+#result-container .search_result_category {
+  margin-bottom: 15px;
+}
