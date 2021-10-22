@@ -1,5 +1,8 @@
 /*
 Description of exercise 2
+
+Filter through data inside json file and display filtered searchItem
+Visualise data and respond visually to filtering 
 */
 let searchItem;
 let container = $("#result-container");
