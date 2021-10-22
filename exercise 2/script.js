@@ -14,25 +14,13 @@ let displayResult = {
 };
 
 let context;
-let crosses = [];
-const NUM_CROSS = 100;
+let filteredResults;
+let squares = [];
+let squareSize = 10;
+let count = 0;
 
 window.onload = function () {
   setUpCanvas();
-
-  requestAnimationFrame(animate);
-
-  function animate() {
-    // clear canvas
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (let i = 0; i < NUM_CROSS; i++) {
-      console.log(crosses[i]);
-      crosses[i].display();
-    }
-
-    requestAnimationFrame(animate);
-  }
 };
 
 $(document).ready(function () {
@@ -63,10 +51,18 @@ function setUpCanvas() {
     canvas.height = window.innerHeight;
   });
 
-  // draw crosses
-  for (let i = 0; i < NUM_CROSS; i++) {
-    let cross = new Cross(canvas.width / 2, canvas.height / 2, context);
-    crosses.push(cross);
+  // draw squares
+  for (let i = 0; i < data.activities.length; i++) {
+    let squareImg = new Square(
+      squareSize,
+      canvas.width,
+      canvas.height,
+      context
+    );
+    squares.push(squareImg);
+  }
+  for (let i = 0; i < data.activities.length; i++) {
+    squares[i].display();
   }
 }
 
@@ -81,6 +77,7 @@ function displayResults(results) {
 function searchAndFilter() {
   // Get search terms
   $("#searchButton").click(getSearchTerms);
+
   function getSearchTerms() {
     // deletes text in search bar
     $("#result-container").empty();
@@ -88,7 +85,7 @@ function searchAndFilter() {
     searchItem = $("#searchText").val();
 
     // filter
-    let filteredResults = data["activities"].filter(function (json) {
+    filteredResults = data["activities"].filter(function (json) {
       return json.day === searchItem;
     });
 
@@ -121,7 +118,25 @@ function searchAndFilter() {
           .appendTo(container)
           .addClass("search_result_category");
         displayResult.category.text(jsonData[i].category);
+
+        // modify square appearance
+        squares[i].grow();
+        console.log(filteredResults.length);
+
+        // change colour according to category
+        if (filteredResults[i].category === "Game") {
+          squares[i].displayGreen();
+        } else if (filteredResults[i].category === "Food") {
+          squares[i].displayBlue();
+        } else if (filteredResults[i].category === "Leisure") {
+          squares[i].displayYellow();
+        } else if (filteredResults[i].category === "Book") {
+          squares[i].displayMint();
+        } //if
+
+        squares[i].shrink();
+        squares[i].display();
       }
-    }
+    } //fruitful search
   } //getSearchTerms
 }

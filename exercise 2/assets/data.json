@@ -17,6 +17,14 @@
     },
 
     {
+      "activityID": "2",
+      "day": "saturday",
+      "time": "8:30 PM",
+      "description": "Light novel translations 2",
+      "category": "Book"
+    },
+
+    {
       "activityID": "3",
       "day": "sunday",
       "time": "8:59 PM",
@@ -28,7 +36,7 @@
       "day": "sunday",
       "time": "9:49 PM",
       "description": "DIY cosmetics recipes",
-      "category": "Crafting"
+      "category": "Leisure"
     },
 
     {
@@ -43,7 +51,7 @@
       "day": "monday",
       "time": "10:55 PM",
       "description": "Simple Polygon Generator",
-      "category": "Blender"
+      "category": "Leisure"
     }
   ]
 }
