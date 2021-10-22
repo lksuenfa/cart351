@@ -10,9 +10,10 @@ class Square {
     this.context = context;
 
     this.speed = 1;
+    this.colorChoice = `rgb(255,0,0)`;
   }
   display() {
-    this.context.fillStyle = `rgb(255,0,0)`;
+    this.context.fillStyle = this.colorChoice;
     this.context.fillRect(this.x, this.y, this.size, this.size);
   }
 
@@ -41,5 +42,9 @@ class Square {
   displayMint() {
     this.context.fillStyle = `rgb(66, 245, 227)`;
     this.context.fillRect(this.x, this.y, this.size, this.size);
+  }
+  reset() {
+    this.size = 10;
+    this.colorChoice = `rgb(255,0,0)`;
   }
 }

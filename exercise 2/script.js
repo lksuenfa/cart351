@@ -84,6 +84,13 @@ function searchAndFilter() {
     // get value from input field
     searchItem = $("#searchText").val();
 
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < squares.length; i++) {
+      squares[i].reset();
+      squares[i].display();
+    }
+
     // filter
     filteredResults = data["activities"].filter(function (json) {
       return json.day === searchItem;
@@ -133,9 +140,6 @@ function searchAndFilter() {
         } else if (filteredResults[i].category === "Book") {
           squares[i].displayMint();
         } //if
-
-        squares[i].shrink();
-        squares[i].display();
       }
     } //fruitful search
   } //getSearchTerms
