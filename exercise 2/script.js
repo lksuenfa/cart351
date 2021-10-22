@@ -94,6 +94,7 @@ function displayResults(results) {
     }
     //if search is fruitful
     else {
+      // add subtitle
       let searchResult = $("<p>").appendTo(container).addClass("search_result");
       searchResult.text("Things I did on " + searchItem + " : ");
 
@@ -101,17 +102,15 @@ function displayResults(results) {
       let jsonData = data.activities;
 
       for (let i = 0; i < filteredResults.length; i++) {
-        console.log(searchItem === jsonData[i].day);
-        // if (searchItem === jsonData[i].day) {
-        displayResult.day = $("<p>")
-          .appendTo(container)
-          .addClass("search_result_day");
-        displayResult.day.text(jsonData[i].day);
-
         displayResult.description = $("<p>")
           .appendTo(container)
           .addClass("search_result_description");
         displayResult.description.text(jsonData[i].description);
+
+        displayResult.day = $("<p>")
+          .appendTo(container)
+          .addClass("search_result_day");
+        displayResult.day.text(jsonData[i].day);
 
         displayResult.time = $("<p>")
           .appendTo(container)
