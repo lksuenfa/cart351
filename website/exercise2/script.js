@@ -20,9 +20,7 @@ let context;
 let filteredResults;
 let squares = [];
 
-window.onload = function () {
-  setUpCanvas();
-};
+// window.onload = function () {};
 
 $(document).ready(function () {
   // function to load JSON
@@ -36,35 +34,12 @@ $(document).ready(function () {
   }); //fail
 });
 
-// function to set up canvas
-function setUpCanvas() {
-  canvas = document.getElementById("testCanvas");
-  context = canvas.getContext("2d");
-
-  // canvas size
-  canvas.width = window.innerWidth * (3 / 4);
-  // canvas.height = window.innerHeight;
-  canvas.height = window.innerHeight;
-
-  // allow canvas resize update
-  window.addEventListener("resize", function (event) {
-    // canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-
-  // draw squares
-  for (let i = 0; i < data.activities.length; i++) {
-    let squareImg = new Square(canvas.width, canvas.height, context);
-    squares.push(squareImg);
-  }
-  for (let i = 0; i < data.activities.length; i++) {
-    squares[i].display();
-  }
-}
-
 // function to display results
 function displayResults(results) {
   data = results;
+
+  setUpCanvas();
+
   // On click get search terms
   $("#searchButton").click(getSearchTerms);
 
@@ -108,22 +83,22 @@ function displayResults(results) {
         displayResult.description = $("<p>")
           .appendTo(container)
           .addClass("search_result_description");
-        displayResult.description.text(jsonData[i].description);
+        displayResult.description.text(filteredResults[i].description);
 
         displayResult.day = $("<p>")
           .appendTo(container)
           .addClass("search_result_day");
-        displayResult.day.text(jsonData[i].day);
+        displayResult.day.text(filteredResults[i].day);
 
         displayResult.time = $("<p>")
           .appendTo(container)
           .addClass("search_result_time");
-        displayResult.time.text(jsonData[i].time);
+        displayResult.time.text(filteredResults[i].time);
 
         displayResult.category = $("<p>")
           .appendTo(container)
           .addClass("search_result_category");
-        displayResult.category.text("Category: " + jsonData[i].category);
+        displayResult.category.text("Category: " + filteredResults[i].category);
 
         // modify square appearance
         squares[i].grow();
@@ -141,5 +116,31 @@ function displayResults(results) {
         }
       }
     } //fruitful search
+  }
+}
+
+// function to set up canvas
+function setUpCanvas() {
+  canvas = document.getElementById("testCanvas");
+  context = canvas.getContext("2d");
+
+  // canvas size
+  canvas.width = window.innerWidth * (3 / 4);
+  // canvas.height = window.innerHeight;
+  canvas.height = window.innerHeight;
+
+  // allow canvas resize update
+  window.addEventListener("resize", function (event) {
+    // canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  // draw squares
+  for (let i = 0; i < data.activities.length; i++) {
+    let squareImg = new Square(canvas.width, canvas.height, context);
+    squares.push(squareImg);
+  }
+  for (let i = 0; i < data.activities.length; i++) {
+    squares[i].display();
   }
 }
