@@ -1,0 +1,13 @@
+* {
+  background-color: cadetblue;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+iframe {
+  margin: 50px;
+}

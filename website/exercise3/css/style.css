@@ -1,0 +1,23 @@
+body {
+  background: mediumvioletred;
+}
+
+#container {
+  background: black;
+  font-size: 0;
+  margin: auto;
+  height: 500px;
+  width: 500px;
+  padding: 0;
+  border: none;
+}
+
+.square {
+  /* background: orangered; */
+
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: 10px solid mediumvioletred;
+  display: inline-block;
+}
