@@ -16,7 +16,30 @@ $(document).ready(function () {
       //Do Something
       console.log("responded" + response);
       console.log(JSON.parse(response));
-      // getIds = []; //array to store ids of clicked squares
+
+      // change square colour according to database
+
+      // convert JSON to string
+      let parsedJSON = JSON.parse(response);
+
+      for (let i = 0; i < parsedJSON.length; i++) {
+        console.log(parsedJSON[i]);
+        console.log(parsedJSON[i].id);
+        let id = parsedJSON[i].id;
+        let colour = parsedJSON[i].background;
+
+        let squares = $(".square");
+        for (let i = 0; i < squares.length; i++) {
+          if (squares[i].id === id && id != "undefined") {
+            $(squares[i]).css("background", colour);
+            console.log(squares[i].id);
+          }
+        }
+
+        // square.css("background", colour);
+
+        $(".opened").css("background", colour);
+      }
     }, // success
   }); //.ajax
 
@@ -25,7 +48,7 @@ $(document).ready(function () {
 
 // simulation
 function simulation() {
-  // create a square
+  // create a square grid
   for (let i = 0; i < GRID; i++) {
     for (let j = 0; j < GRID; j++) {
       square = $("<div>")
@@ -49,19 +72,20 @@ function simulation() {
     if (chance === 1 || chance === 7) {
       // change colour to blue
       $(this).css("background", "blue");
-      console.log("BOOOOOOM");
+
+      let msg = prompt("Boooooommm");
 
       // DOES NOT EXPLODE
     } else {
       //change colour to red
       $(this).css("background", "orangered");
+      $(this).addClass("opened");
 
       // push data into Open
       open.background = this.style.background;
       open.id = this.id;
     }
     console.log(open);
-    $(".square").appendTo("#ones").addClass("taken");
 
     postData();
   }); //click
@@ -69,12 +93,9 @@ function simulation() {
 
 function postData() {
   let formData = new FormData();
-  // for (let i = 0; i < open.length; i++) {
+
   formData.append("background", open.background);
   formData.append("id", open.id);
-
-  // }
-  // formData.append("lengthOfVals", JSON.stringify(open.length));
 
   $.ajax({
     type: "POST",
@@ -91,9 +112,6 @@ function postData() {
       //response is a STRING (not a JavaScript object -> so we need to convert)
       console.log("we had success!");
       console.log(response);
-      //empty the result array and the container ....each time we submit
-      // open = [];
-      // $("#ones").empty();
     },
 
     // if error

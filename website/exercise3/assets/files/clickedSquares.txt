@@ -1,2 +1,3 @@
-orangered,2
-orangered,6
+orangered,4
+orangered,10
+orangered,4

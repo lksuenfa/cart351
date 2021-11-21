@@ -22,15 +22,10 @@ require('linkData.php');
   </head>
   <body>
 <h1> Rat miners</h1>
+<p>Click to find the bombs</p>
 <div id="container">
 
 </div>
-<form id="submitZone" class="" action="" method="post">
-  <p class = "sub"><input type = "submit" name = "submitBtn" value = "Submit" id =submitBtn /></p>
-
-
-</form>
-
 
 
     <script src="js/script.js"></script>

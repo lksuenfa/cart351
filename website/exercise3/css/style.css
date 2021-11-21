@@ -1,5 +1,6 @@
 body {
   background: mediumvioletred;
+  font-family: arial, sans-serif;
 }
 
 #container {
@@ -20,4 +21,13 @@ body {
   border: none;
   outline: 10px solid mediumvioletred;
   display: inline-block;
+}
+
+h1 {
+  color: white;
+}
+
+p {
+  color: white;
+  opacity: 60%;
 }
