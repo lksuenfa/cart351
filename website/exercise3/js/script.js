@@ -25,20 +25,19 @@ $(document).ready(function () {
       for (let i = 0; i < parsedJSON.length; i++) {
         console.log(parsedJSON[i]);
         console.log(parsedJSON[i].id);
+
         let id = parsedJSON[i].id;
         let colour = parsedJSON[i].background;
-
         let squares = $(".square");
+
         for (let i = 0; i < squares.length; i++) {
+          // if id in text file and not a previously blue square
           if (squares[i].id === id && id != "undefined") {
+            // change colour to red orange
             $(squares[i]).css("background", colour);
             console.log(squares[i].id);
           }
         }
-
-        // square.css("background", colour);
-
-        $(".opened").css("background", colour);
       }
     }, // success
   }); //.ajax
@@ -73,6 +72,7 @@ function simulation() {
       // change colour to blue
       $(this).css("background", "blue");
 
+      // prompt message
       let msg = prompt("Boooooommm");
 
       // DOES NOT EXPLODE

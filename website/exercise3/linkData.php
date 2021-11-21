@@ -14,16 +14,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'
       while(!feof($theFile)) {
         $str = fgets($theFile);
         $tempObj = new stdClass();
+
+        // explode str at ,
         $tempArr = explode(",",$str);
         $key1 = "background";
         $key2 = "id";
         $tempObj->$key1 = $tempArr[0];
+        // remove /n
           $tempObj->$key2 = rtrim($tempArr[1]);
 
 
         // return line from open file
-
-
           $outArr[]=$tempObj;
       }
 
@@ -44,7 +45,7 @@ var_dump($_POST);
 $background = $_POST["background"];
 $id = $_POST["id"];
 
-
+// write into file
   fwrite($theFile, $background.",".$id);
   fwrite($theFile,"\n");
   fclose($theFile);
